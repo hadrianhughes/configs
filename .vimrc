@@ -31,6 +31,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 " Set up color scheme
