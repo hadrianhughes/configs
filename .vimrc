@@ -32,6 +32,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'mattn/emmet-vim'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 " Set up color scheme
