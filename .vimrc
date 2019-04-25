@@ -21,6 +21,7 @@ set shiftwidth=4
 :inoremap { {}<Esc>i
 :inoremap ' ''<Esc>i
 :inoremap " ""<Esc>i
+:inoremap [ []<Esc>i
 
 " vim-plug section
 call plug#begin()
@@ -42,4 +43,7 @@ colorscheme dracula
 " Start and set up NERDTree
 autocmd vimenter * NERDTree
 let NERDTreeShowHidden=1
+
+" Configure YouCompleteMe
+set completeopt-=preview
 
