@@ -16,12 +16,25 @@ set tabstop=4
 set shiftwidth=4
 " " On pressing tab, insert 4 spaces (Uncomment to use spaces)
 " set expandtab
+" " Always allow backspace
+set backspace=indent,eol,start
+" " Set relative line numbers
+set relativenumber
+" " Disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+
 " Auto close braces and quotes
-:inoremap ( ()<Esc>i
-:inoremap { {}<Esc>i
-:inoremap ' ''<Esc>i
-:inoremap " ""<Esc>i
-:inoremap [ []<Esc>i
+inoremap ( ()<Esc>i
+inoremap { {}<Esc>i
+inoremap " ""<Esc>i
+inoremap [ []<Esc>i
 
 " vim-plug section
 call plug#begin()
@@ -38,7 +51,9 @@ call plug#end()
 
 " Set up color scheme
 syntax on
+let g:dracula_italic = 0
 colorscheme dracula
+highlight Normal ctermbg=236
 
 " Start and set up NERDTree
 autocmd vimenter * NERDTree
@@ -46,4 +61,7 @@ let NERDTreeShowHidden=1
 
 " Configure YouCompleteMe
 set completeopt-=preview
+
+" Enable syntax highlighting in code blocks in markdown files
+let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c']
 
