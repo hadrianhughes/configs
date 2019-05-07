@@ -47,6 +47,8 @@ Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'mattn/emmet-vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 " Set up color scheme
@@ -58,6 +60,9 @@ highlight Normal ctermbg=236
 " Start and set up NERDTree
 autocmd vimenter * NERDTree
 let NERDTreeShowHidden=1
+
+" Settings for nerdcommenter
+let g:NERDSpaceDelims=1
 
 " Configure YouCompleteMe
 set completeopt-=preview
