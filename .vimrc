@@ -49,6 +49,10 @@ Plug 'mattn/emmet-vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'niftylettuce/vim-jinja'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " Set up color scheme
@@ -70,3 +74,4 @@ set completeopt-=preview
 " Enable syntax highlighting in code blocks in markdown files
 let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c']
 
+au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nj set ft=jinja
