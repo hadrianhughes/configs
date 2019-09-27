@@ -11,16 +11,19 @@ set timeoutlen=1000 ttimeoutlen=0
 " Automatic filetype detection
 filetype plugin on
 " show existing tab with 4 spaces width
-set tabstop=4
-" " when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" " On pressing tab, insert 4 spaces (Uncomment to use spaces)
-" set expandtab
-" " Always allow backspace
+set tabstop=2
+" when indenting with '>', use 4 spaces width
+set shiftwidth=2
+" On pressing tab, insert 4 spaces (Uncomment to use spaces)
+set expandtab
+" Always allow backspace
 set backspace=indent,eol,start
-" " Set relative line numbers
+" Set relative line numbers
 set relativenumber
-" " Disable arrow keys
+" Show next/previous 5 lines when scrolling
+set scrolloff=5
+
+" Disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -36,9 +39,14 @@ inoremap { {}<Esc>i
 inoremap " ""<Esc>i
 inoremap [ []<Esc>i
 
+" Add a new line without entering insert mode
+nmap <CR> o<Esc>
+
 " vim-plug section
 call plug#begin()
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'elmcast/elm-vim'
 Plug 'mxw/vim-jsx'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'scrooloose/nerdtree'
@@ -74,4 +82,4 @@ set completeopt-=preview
 " Enable syntax highlighting in code blocks in markdown files
 let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c']
 
-au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nj set ft=jinja
+au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nj,*.vue set ft=jinja
