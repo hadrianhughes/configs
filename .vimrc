@@ -44,11 +44,11 @@ nmap <CR> o<Esc>
 
 " vim-plug section
 call plug#begin()
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'karthikv/vim-typescript'
 Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
 Plug 'elmcast/elm-vim'
 Plug 'mxw/vim-jsx'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
