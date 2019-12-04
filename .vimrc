@@ -83,3 +83,7 @@ set completeopt-=preview
 let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c']
 
 au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nj,*.vue set ft=jinja
+
+let g:ale_linters = {
+\  'cs': ['OmniSharp']
+\}
