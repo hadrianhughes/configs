@@ -45,11 +45,7 @@ nmap <CR> o<Esc>
 " vim-plug section
 call plug#begin()
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'leafgarland/typescript-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'elmcast/elm-vim'
-Plug 'mxw/vim-jsx'
-Plug 'ianks/vim-tsx'
+Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
@@ -58,9 +54,6 @@ Plug 'mattn/emmet-vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'niftylettuce/vim-jinja'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
