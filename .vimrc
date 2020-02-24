@@ -45,10 +45,11 @@ nmap <CR> o<Esc>
 " vim-plug section
 call plug#begin()
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'karthikv/vim-typescript'
+Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'elmcast/elm-vim'
 Plug 'mxw/vim-jsx'
+Plug 'ianks/vim-tsx'
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
@@ -83,7 +84,8 @@ set completeopt-=preview
 let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c']
 
 au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nj,*.vue set ft=jinja
+autocmd BufNewFile,BufRead *.ts set filetype=typescript.tsx
 
 let g:ale_linters = {
-\  'cs': ['OmniSharp']
+\   'typescript': ['eslint']
 \}
