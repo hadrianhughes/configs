@@ -34,6 +34,9 @@ set scrolloff=5
 " Always show status line
 set laststatus=2
 
+" Enable 256 color mode
+set term=screen-256color
+
 " Disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
