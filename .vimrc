@@ -91,10 +91,17 @@ let g:NERDSpaceDelims=1
 " Enable syntax highlighting in code blocks in markdown files
 let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c']
 
+" Interpret the following file types as TypeScript
 autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript.tsx
 
+" Extra ALE linter assignments
 let g:ale_linters = {
 \   'typescript': ['eslint']
+\}
+
+" Extra lightline config
+let g:lightline = {
+\   'colorscheme': 'wombat'
 \}
 
 let vimrc = ".vimrc file initialized."
