@@ -61,7 +61,6 @@ call plug#begin()
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-" Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
@@ -76,10 +75,6 @@ syntax on
 let g:dracula_italic = 0
 colorscheme dracula
 highlight Normal ctermbg=236
-
-" Start and set up NERDTree
-" autocmd vimenter * NERDTree
-" let NERDTreeShowHidden=1
 
 " Settings for nerdcommenter
 let g:NERDSpaceDelims=1
