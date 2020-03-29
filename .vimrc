@@ -69,7 +69,6 @@ Plug 'mattn/emmet-vim'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
-Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " Set up color scheme
