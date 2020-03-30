@@ -56,12 +56,6 @@ inoremap { {}<Esc>i
 inoremap " ""<Esc>i
 inoremap [ []<Esc>i
 
-function OpenNetrwInSplit()
-  Lex
-  execute "normal! 45\<C-w><"
-endfunction
-au VimEnter * call OpenNetrwInSplit()
-
 " vim-plug section
 call plug#begin()
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -74,6 +68,7 @@ Plug 'mattn/emmet-vim'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 " Set up color scheme
@@ -84,6 +79,9 @@ highlight Normal ctermbg=236
 
 " Settings for nerdcommenter
 let g:NERDSpaceDelims=1
+
+autocmd vimenter * NERDTree
+let NERDTreeShowHidden=1
 
 " Configure YouCompleteMe
 " set completeopt-=preview
