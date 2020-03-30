@@ -56,6 +56,12 @@ inoremap { {}<Esc>i
 inoremap " ""<Esc>i
 inoremap [ []<Esc>i
 
+function OpenNetrwInSplit()
+  Lex
+  execute "normal! 45\<C-w><"
+endfunction
+au VimEnter * call OpenNetrwInSplit()
+
 " vim-plug section
 call plug#begin()
 Plug 'dracula/vim', { 'as': 'dracula' }
