@@ -69,6 +69,8 @@ Plug 'mattn/emmet-vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Set up color scheme
