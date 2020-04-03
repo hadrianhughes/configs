@@ -101,4 +101,5 @@ export NVM_DIR="$HOME/.nvm"
 alias dc="docker-compose"
 alias detach="tmux detach"
 
-echo ".zshrc loaded"
+cat aperture-ascii
+echo "\n\n\n"
