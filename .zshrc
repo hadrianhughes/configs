@@ -101,5 +101,5 @@ export NVM_DIR="$HOME/.nvm"
 alias dc="docker-compose"
 alias detach="tmux detach"
 
-cat aperture-ascii
+cat ~/aperture-ascii
 echo "\n\n\n"
