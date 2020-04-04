@@ -8,3 +8,5 @@ bind-key  a mark-all-above-as-read
 browser "curl -L %u | ctc | lynx -stdin"
 
 keep-articles-days 7
+
+auto-reload yes
