@@ -1,0 +1,10 @@
+color info              color198 default bold
+color listfocus_unread  color42 default bold
+color listfocus         color31 default
+
+bind-key  a mark-all-above-as-read
+
+# browser /usr/bin/open -a "/Applications/Google Chrome.app" '%u'
+browser "curl -L -o ~/Desktop/TEMP_PAGE %u"
+
+keep-articles-days 7
