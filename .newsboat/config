@@ -5,6 +5,8 @@ color listfocus         color31 default
 bind-key  a mark-all-above-as-read
 
 # browser /usr/bin/open -a "/Applications/Google Chrome.app" '%u'
-browser "curl -L -o ~/Desktop/TEMP_PAGE %u"
+browser "curl -L %u | ctc | lynx -stdin"
 
 keep-articles-days 7
+
+auto-reload yes
