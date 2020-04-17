@@ -7,7 +7,8 @@ export ZSH=/Users/hadrianhughes/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="zsh2000"
+# ZSH_THEME="zsh2000"
+ZSH_THEME="sunrise"
 export ZSH_2000_DISABLE_RVM='true'
 
 # Set list of themes to load
@@ -103,3 +104,6 @@ alias detach="tmux detach"
 
 cat ~/aperture-ascii
 echo "\n\n\n"
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
