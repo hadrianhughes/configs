@@ -58,14 +58,14 @@ inoremap [ []<Esc>i
 
 " vim-plug section
 call plug#begin()
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'micha/vim-colors-solarized'
 Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'mattn/emmet-vim'
-" Plug 'Valloric/YouCompleteMe'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -75,9 +75,11 @@ call plug#end()
 
 " Set up color scheme
 syntax on
-let g:dracula_italic = 0
-colorscheme dracula
-highlight Normal ctermbg=236
+" let g:dracula_italic = 0
+" colorscheme dracula
+" highlight Normal ctermbg=236
+set background=light
+colorscheme solarized
 
 " Settings for nerdcommenter
 let g:NERDSpaceDelims=1
@@ -101,7 +103,7 @@ let g:ale_linters = {
 
 " Extra lightline config
 let g:lightline = {
-\   'colorscheme': 'wombat'
+\   'colorscheme': 'solarized'
 \}
 
 let vimrc = ".vimrc file initialized."
