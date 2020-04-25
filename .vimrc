@@ -84,8 +84,11 @@ colorscheme solarized
 " Settings for nerdcommenter
 let g:NERDSpaceDelims=1
 
-autocmd vimenter * NERDTree
-let NERDTreeShowHidden=1
+" Disable NERDTree with the NO_TREE env variable
+if $NO_TREE != 'true'
+  autocmd vimenter * NERDTree
+  let NERDTreeShowHidden=1
+endif
 
 " Configure YouCompleteMe
 " set completeopt-=preview
