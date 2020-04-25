@@ -86,6 +86,9 @@ let g:NERDSpaceDelims=1
 
 " Disable NERDTree with the NO_TREE env variable
 if $NO_TREE != 'true'
+  set wildignore+=*.DS_Store,*.swp
+  let NERDTreeRespectWildIgnore=1
+
   autocmd vimenter * NERDTree
   let NERDTreeShowHidden=1
 endif
