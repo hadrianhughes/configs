@@ -81,6 +81,10 @@ syntax on
 set background=light
 colorscheme solarized
 
+" Persist undo history
+set undofile
+set undodir=~/.vim/undodir
+
 " Settings for nerdcommenter
 let g:NERDSpaceDelims=1
 
@@ -91,6 +95,7 @@ if $NO_TREE != 'true'
 
   autocmd vimenter * NERDTree
   let NERDTreeShowHidden=1
+  nmap <F6> :NERDTreeToggle<CR>
 endif
 
 " Configure YouCompleteMe
@@ -103,9 +108,9 @@ let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascrip
 autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript.tsx
 
 " Extra ALE linter assignments
-let g:ale_linters = {
-\   'typescript': ['eslint']
-\}
+" let g:ale_linters = {
+" \   'typescript': ['eslint']
+" \}
 
 " Extra lightline config
 let g:lightline = {
