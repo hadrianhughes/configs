@@ -10,9 +10,6 @@ filetype plugin indent on
 " Prevent delay
 set timeoutlen=1000 ttimeoutlen=0
 
-" Automatic filetype detection
-filetype plugin on
-
 " show existing tab with 4 spaces width
 set tabstop=2
 
@@ -36,6 +33,9 @@ set laststatus=2
 
 " Hide default mode status
 set noshowmode
+
+" Search while typing
+set incsearch
 
 " Enable 256 color mode
 set term=screen-256color
@@ -107,14 +107,13 @@ let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascrip
 " Interpret the following file types as TypeScript
 autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript.tsx
 
-" Extra ALE linter assignments
-" let g:ale_linters = {
-" \   'typescript': ['eslint']
-" \}
+" Disable ALE for assembly files
+let g:ale_pattern_options = {'\.asm$': {'ale_enabled': 0}}
 
 " Extra lightline config
 let g:lightline = {
 \   'colorscheme': 'solarized'
 \}
+
 
 let vimrc = ".vimrc file initialized."
