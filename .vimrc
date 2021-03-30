@@ -71,6 +71,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
 call plug#end()
 
 " Set up color scheme
@@ -109,6 +110,23 @@ autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript.tsx
 
 " Disable ALE for assembly files
 let g:ale_pattern_options = {'\.asm$': {'ale_enabled': 0}}
+
+" ALE setup for Haskell
+function CheckIfFileExists(filename)
+  if filereadable(a:filename)
+    return 1
+  endif
+
+  return 0
+endfunction
+
+" Disable GHC linter if in a Haskell Stack project
+if (CheckIfFileExists("./stack.yaml") == 1)
+  let g:ale_linters = {
+  \   'haskell': ['stack-build']
+  \}
+endif
+let g:ghcid_command = 'stack exec ghcid --'
 
 " Extra lightline config
 let g:lightline = {
