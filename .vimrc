@@ -22,9 +22,6 @@ set expandtab
 " Always allow backspace
 set backspace=indent,eol,start
 
-" Set relative line numbers
-set relativenumber
-
 " Show next/previous 5 lines when scrolling
 set scrolloff=5
 
@@ -36,6 +33,9 @@ set noshowmode
 
 " Search while typing
 set incsearch
+
+" Don't search included files with autocomplete
+set complete-=i
 
 " Enable 256 color mode
 set term=screen-256color
@@ -58,7 +58,6 @@ inoremap [ []<Esc>i
 
 " vim-plug section
 call plug#begin()
-" Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'micha/vim-colors-solarized'
 Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
@@ -76,9 +75,6 @@ call plug#end()
 
 " Set up color scheme
 syntax on
-" let g:dracula_italic = 0
-" colorscheme dracula
-" highlight Normal ctermbg=236
 set background=light
 colorscheme solarized
 
@@ -98,9 +94,6 @@ if $NO_TREE != 'true'
   let NERDTreeShowHidden=1
   nmap <F6> :NERDTreeToggle<CR>
 endif
-
-" Configure YouCompleteMe
-" set completeopt-=preview
 
 " Enable syntax highlighting in code blocks in markdown files
 let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c']
