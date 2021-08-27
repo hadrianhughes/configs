@@ -86,7 +86,7 @@ set undodir=~/.vim/undodir
 let g:NERDSpaceDelims=1
 
 " Disable NERDTree with the NO_TREE env variable
-if $NO_TREE != 'true'
+if index(argv(), '--no-tree') == -1 && $NO_TREE != 'true'
   set wildignore+=*.DS_Store,*.swp
   let NERDTreeRespectWildIgnore=1
 
