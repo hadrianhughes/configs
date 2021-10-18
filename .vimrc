@@ -40,6 +40,9 @@ set complete-=i
 " Enable 256 color mode
 set term=screen-256color
 
+" Use new syntax highlighting engine
+set re=0
+
 " Disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
