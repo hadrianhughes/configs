@@ -1,4 +1,5 @@
 " Set line numbers
+"
 set number
 
 " Set up font
@@ -116,13 +117,27 @@ function CheckIfFileExists(filename)
   return 0
 endfunction
 
-" Disable GHC linter if in a Haskell Stack project
-if (CheckIfFileExists("./stack.yaml") == 1)
-  let g:ale_linters = {
-  \   'haskell': ['stack-build']
-  \}
-endif
-let g:ghcid_command = 'stack exec ghcid --'
+" Begin custom Haskell linter
+call ale#Set('haskell_my_cabal_options', '-fno-code -v0')
+
+function! s:my_cabal_GetCommand(buffer) abort
+  return 'cabal build '
+  \ . ale#Var(a:buffer, 'haskell_my_cabal_options')
+  \ . ' -- %s </dev/null'
+endfunction
+
+call ale#linter#Define('haskell', {
+\  'name': 'my_cabal',
+\  'aliases': ['my-cabal'],
+\  'output_stream': 'stderr',
+\  'executable': 'cabal',
+\  'command': function('s:my_cabal_GetCommand'),
+\  'callback': 'ale#handlers#haskell#HandleGHCFormat',
+\})
+" End custom Haskell linter
+
+if !exists('g:ale_linters') | let g:ale_linters = {} | en
+let g:ale_linters.haskell = ['my-cabal', 'hlint']
 
 " Extra lightline config
 let g:lightline = {
