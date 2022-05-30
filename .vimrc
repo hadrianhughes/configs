@@ -54,12 +54,6 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
-" Auto close braces and quotes
-inoremap ( ()<Esc>i
-inoremap { {}<Esc>i
-inoremap " ""<Esc>i
-inoremap [ []<Esc>i
-
 " vim-plug section
 call plug#begin()
 Plug 'micha/vim-colors-solarized'
@@ -68,12 +62,8 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
-Plug 'mattn/emmet-vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 call plug#end()
 
@@ -85,19 +75,6 @@ colorscheme solarized
 " Persist undo history
 set undofile
 set undodir=~/.vim/undodir
-
-" Settings for nerdcommenter
-let g:NERDSpaceDelims=1
-
-" Disable NERDTree with the NO_TREE env variable
-if $NO_TREE != 'true' && !has('gui_running')
-  set wildignore+=*.DS_Store,*.swp
-  let NERDTreeRespectWildIgnore=1
-
-  autocmd vimenter * NERDTree
-  let NERDTreeShowHidden=1
-  nmap <F6> :NERDTreeToggle<CR>
-endif
 
 " Enable syntax highlighting in code blocks in markdown files
 let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c']
@@ -143,6 +120,5 @@ let g:ale_linters.haskell = ['my-cabal', 'hlint']
 let g:lightline = {
 \   'colorscheme': 'solarized'
 \}
-
 
 let vimrc = ".vimrc file initialized."
