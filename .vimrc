@@ -56,6 +56,7 @@ inoremap <Right> <Nop>
 
 " vim-plug section
 call plug#begin()
+Plug 'tpope/vim-sensible'
 Plug 'micha/vim-colors-solarized'
 Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
