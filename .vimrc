@@ -66,6 +66,7 @@ Plug 'w0rp/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
 Plug 'lervag/vimtex'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 " Set up color scheme
