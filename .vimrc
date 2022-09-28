@@ -96,6 +96,8 @@ function CheckIfFileExists(filename)
   return 0
 endfunction
 
+let g:ale_completion_enabled=1
+
 " Begin custom Haskell linter
 call ale#Set('haskell_my_cabal_options', '-fno-code -v0')
 
