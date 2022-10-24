@@ -41,7 +41,7 @@ set complete-=i
 " Enable 256 color mode
 set term=screen-256color
 
-" Use new syntax highlighting engine
+" Use new syntax highlighting engine (otherwise TypeScript files are _very_ slow)
 set re=0
 
 " Disable arrow keys
@@ -58,14 +58,14 @@ inoremap <Right> <Nop>
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'micha/vim-colors-solarized'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
-Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 Plug 'mattn/emmet-vim'
 call plug#end()
 
@@ -95,8 +95,6 @@ function CheckIfFileExists(filename)
 
   return 0
 endfunction
-
-let g:ale_completion_enabled=1
 
 " Begin custom Haskell linter
 call ale#Set('haskell_my_cabal_options', '-fno-code -v0')
