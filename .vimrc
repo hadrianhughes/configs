@@ -17,8 +17,9 @@ set tabstop=2
 " when indenting with '>', use 4 spaces width
 set shiftwidth=2
 
-" On pressing tab, insert 4 spaces (Uncomment to use spaces)
+" On pressing tab, insert 4 spaces (disable for .tsv files)
 set expandtab
+autocmd BufNewFile,BufRead *.tsv set expandtab!
 
 " Always allow backspace
 set backspace=indent,eol,start
@@ -39,10 +40,13 @@ set incsearch
 set complete-=i
 
 " Enable 256 color mode
-set term=screen-256color
+set term=xterm-256color
 
 " Use new syntax highlighting engine (otherwise TypeScript files are _very_ slow)
 set re=0
+
+" Wrap lines in a writer-friendly way
+set linebreak
 
 " Disable arrow keys
 noremap <Up> <Nop>
@@ -58,6 +62,7 @@ inoremap <Right> <Nop>
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'micha/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 "Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'itchyny/lightline.vim'
@@ -67,12 +72,14 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
 "Plug 'lervag/vimtex'
 Plug 'mattn/emmet-vim'
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 " Set up color scheme
 syntax on
 set background=light
 colorscheme solarized
+let s:terminal_italic=1
 
 " Persist undo history
 set undofile
