@@ -70,9 +70,8 @@ Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'lervag/vimtex'
 Plug 'mattn/emmet-vim'
-Plug 'junegunn/goyo.vim'
+Plug 'habamax/vim-godot'
 call plug#end()
 
 " Set up color scheme
@@ -94,6 +93,8 @@ autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript.tsx
 " Disable ALE for assembly files
 let g:ale_pattern_options = {'\.asm$': {'ale_enabled': 0}}
 
+let g:ale_virtualtext_cursor=0
+
 " ALE setup for Haskell
 function CheckIfFileExists(filename)
   if filereadable(a:filename)
@@ -103,7 +104,6 @@ function CheckIfFileExists(filename)
   return 0
 endfunction
 
-" Begin custom Haskell linter
 call ale#Set('haskell_my_cabal_options', '-fno-code -v0')
 
 function! s:my_cabal_GetCommand(buffer) abort
@@ -111,6 +111,13 @@ function! s:my_cabal_GetCommand(buffer) abort
   \ . ale#Var(a:buffer, 'haskell_my_cabal_options')
   \ . ' -- %s </dev/null'
 endfunction
+
+call ale#linter#Define('gdscript', {
+\   'name': 'godot',
+\   'lsp': 'socket',
+\   'address': '127.0.0.1:6005',
+\   'project_root': 'project.godot',
+\})
 
 call ale#linter#Define('haskell', {
 \  'name': 'my_cabal',
@@ -120,7 +127,6 @@ call ale#linter#Define('haskell', {
 \  'command': function('s:my_cabal_GetCommand'),
 \  'callback': 'ale#handlers#haskell#HandleGHCFormat',
 \})
-" End custom Haskell linter
 
 if !exists('g:ale_linters') | let g:ale_linters = {} | en
 let g:ale_linters.haskell = ['my-cabal', 'hlint']
