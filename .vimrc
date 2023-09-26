@@ -139,4 +139,24 @@ let g:lightline = {
 \   'colorscheme': 'solarized'
 \}
 
+" Enable spell checking in Markdown files
+function SetupSpellCheck()
+  if &ft ==# 'markdown'
+    set spell
+    set spelllang=en_gb
+    hi SpellBad ctermbg=DarkRed
+    hi SpellCap ctermbg=DarkRed
+    hi SpellRare ctermbg=DarkRed
+    hi SpellLocal ctermbg=DarkRed
+    hi SpellBad ctermfg=White
+    hi SpellCap ctermfg=White
+    hi SpellRare ctermfg=White
+    hi SpellLocal ctermfg=White
+  else
+    set nospell
+  endif
+endfunction
+
+au BufEnter * call SetupSpellCheck()
+
 let vimrc = ".vimrc file initialized."
