@@ -72,6 +72,9 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mattn/emmet-vim'
 Plug 'habamax/vim-godot'
+Plug 'lepture/vim-jinja'
+Plug 'prisma/vim-prisma'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " Set up color scheme
