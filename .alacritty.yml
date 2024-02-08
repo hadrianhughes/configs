@@ -1,0 +1,12 @@
+env:
+  TERM: xterm-256color
+
+shell:
+  program: /usr/bin/tmux
+  args:
+    - new-session
+    - -A
+    - -s
+    - main
+font:
+  size: 13.0
