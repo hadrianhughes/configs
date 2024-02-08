@@ -1,5 +1,4 @@
 " Set line numbers
-"
 set number
 
 " Set up font
@@ -61,7 +60,8 @@ inoremap <Right> <Nop>
 " vim-plug section
 call plug#begin()
 Plug 'tpope/vim-sensible'
-Plug 'micha/vim-colors-solarized'
+"Plug 'micha/vim-colors-solarized'
+Plug 'sainnhe/gruvbox-material'
 Plug 'morhetz/gruvbox'
 "Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
@@ -79,9 +79,11 @@ call plug#end()
 
 " Set up color scheme
 syntax on
-set background=light
-colorscheme solarized
+set background=dark
 let s:terminal_italic=1
+let g:gruvbox_material_background = 'soft'
+let g:gruvbox_material_better_performance = 1
+colorscheme gruvbox-material
 
 " Persist undo history
 set undofile
