@@ -1,6 +1,5 @@
 export ZSH=/Users/hadrianhughes/.oh-my-zsh
 
-ZSH_THEME="sunrise"
 export ZSH_2000_DISABLE_RVM='true'
 
 plugins=(
