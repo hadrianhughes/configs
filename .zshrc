@@ -20,9 +20,16 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-echo "\n\n\n"
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if command -v nom &> /dev/null
+then
+  nom_lines=$(nom list | wc -l)
+  nom_unread=$(($nom_lines / 2))
+  #echo "\033[0;33m$nom_unread unread posts in nom."
+  echo "\033[1;33m\n$nom_unread unread posts in nom."
+fi
 
 export PATH="$HOME/.tgenv/bin:$HOME/go/bin:$PATH"
