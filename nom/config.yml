@@ -3,3 +3,5 @@ feeds:
       name: without.boats
     - url: https://blog.qassim.uk/rss/
       name: Qassim
+    - url: https://overreacted.io/rss.xml
+      name: Dan Abramov
