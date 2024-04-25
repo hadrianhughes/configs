@@ -60,17 +60,13 @@ inoremap <Right> <Nop>
 " vim-plug section
 call plug#begin()
 Plug 'tpope/vim-sensible'
-"Plug 'micha/vim-colors-solarized'
 Plug 'sainnhe/gruvbox-material'
 Plug 'morhetz/gruvbox'
-"Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
-Plug 'mattn/emmet-vim'
 Plug 'habamax/vim-godot'
 Plug 'lepture/vim-jinja'
 Plug 'prisma/vim-prisma'
