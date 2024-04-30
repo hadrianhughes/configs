@@ -71,6 +71,7 @@ Plug 'habamax/vim-godot'
 Plug 'lepture/vim-jinja'
 Plug 'prisma/vim-prisma'
 Plug 'hashivim/vim-terraform'
+Plug 'killphi/vim-ebnf'
 call plug#end()
 
 " Set up color scheme
