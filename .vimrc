@@ -87,7 +87,7 @@ set undofile
 set undodir=~/.vim/undodir
 
 " Enable syntax highlighting in code blocks in markdown files
-let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c']
+let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c', 'ebnf']
 
 " Interpret the following file types as TypeScript
 autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript.tsx
