@@ -133,10 +133,6 @@ call ale#linter#Define('haskell', {
 if !exists('g:ale_linters') | let g:ale_linters = {} | en
 let g:ale_linters.haskell = ['my-cabal', 'hlint']
 
-" Extra lightline config
-let g:lightline = {
-\   'colorscheme': 'solarized'
-\}
 
 " Enable spell checking in Markdown files
 function SetupSpellCheck()
@@ -157,5 +153,4 @@ function SetupSpellCheck()
 endfunction
 
 au BufEnter * call SetupSpellCheck()
-
 let vimrc = ".vimrc file initialized."
