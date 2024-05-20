@@ -72,6 +72,7 @@ Plug 'lepture/vim-jinja'
 Plug 'prisma/vim-prisma'
 Plug 'hashivim/vim-terraform'
 Plug 'killphi/vim-ebnf'
+Plug 'chrisbra/csv.vim'
 call plug#end()
 
 " Set up color scheme
