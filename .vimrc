@@ -10,10 +10,10 @@ filetype plugin indent on
 " Prevent delay
 set timeoutlen=1000 ttimeoutlen=0
 
-" show existing tab with 4 spaces width
+" Show existing tab with 4 spaces width
 set tabstop=2
 
-" when indenting with '>', use 4 spaces width
+" When indenting with '>', use 4 spaces width
 set shiftwidth=2
 
 " On pressing tab, insert 4 spaces (disable for .tsv files)
@@ -61,18 +61,13 @@ inoremap <Right> <Nop>
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'sainnhe/gruvbox-material'
-Plug 'morhetz/gruvbox'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
-Plug 'habamax/vim-godot'
 Plug 'lepture/vim-jinja'
 Plug 'prisma/vim-prisma'
 Plug 'hashivim/vim-terraform'
-Plug 'killphi/vim-ebnf'
-Plug 'chrisbra/csv.vim'
 call plug#end()
 
 " Set up color scheme
@@ -88,25 +83,16 @@ set undofile
 set undodir=~/.vim/undodir
 
 " Enable syntax highlighting in code blocks in markdown files
-let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c', 'ebnf']
+let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c']
 
 " Interpret the following file types as TypeScript
 autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript.tsx
 
 " Disable ALE for assembly files
 let g:ale_pattern_options = {'\.asm$': {'ale_enabled': 0}}
-
 let g:ale_virtualtext_cursor=0
 
 " ALE setup for Haskell
-function CheckIfFileExists(filename)
-  if filereadable(a:filename)
-    return 1
-  endif
-
-  return 0
-endfunction
-
 call ale#Set('haskell_my_cabal_options', '-fno-code -v0')
 
 function! s:my_cabal_GetCommand(buffer) abort
@@ -114,13 +100,6 @@ function! s:my_cabal_GetCommand(buffer) abort
   \ . ale#Var(a:buffer, 'haskell_my_cabal_options')
   \ . ' -- %s </dev/null'
 endfunction
-
-call ale#linter#Define('gdscript', {
-\   'name': 'godot',
-\   'lsp': 'socket',
-\   'address': '127.0.0.1:6005',
-\   'project_root': 'project.godot',
-\})
 
 call ale#linter#Define('haskell', {
 \  'name': 'my_cabal',
