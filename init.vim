@@ -38,14 +38,20 @@ set incsearch
 " Don't search included files with autocomplete
 set complete-=i
 
+" Enable full colours
 set termguicolors
 
 " Wrap lines in a writer-friendly way
 set linebreak
 
+" Always use block cursor
 set guicursor=n-v-c-i:block
 
+" Don't highlight search results
 set nohlsearch
+
+" Disable mouse altogether
+set mouse=
 
 " Disable arrow keys
 noremap <Up> <Nop>
@@ -61,7 +67,8 @@ inoremap <Right> <Nop>
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
+Plug 'neovim/nvim-lspconfig'
+"Plug 'w0rp/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
 Plug 'lepture/vim-jinja'
@@ -85,6 +92,7 @@ colorscheme gruvbox
 " Persist undo history
 set undofile
 set undodir=~/.local/state/nvim/undo
+
 
 " Set up gp.nvim
 lua << EOF
@@ -142,35 +150,25 @@ require('telescope').setup{
 }
 EOF
 
+" Bind :Telescope live_grep to Ctrl-F
+nnoremap <C-f> :Telescope live_grep<CR>
+
 " Enable syntax highlighting in code blocks in markdown files
 let g:markdown_fenced_languages=['bash=sh', 'css', 'haskell', 'html', 'javascript', 'c']
 
 autocmd BufRead,BufNewFile *.ts,*.tsx set filetype=typescript.tsx
 autocmd BufRead,BufNewFile *.h set filetype=c
 
-" Disable ALE for assembly files
-let g:ale_pattern_options = {'\.asm$': {'ale_enabled': 0}}
-let g:ale_virtualtext_cursor=0
+" Enable LSP servers
+lua << EOF
+local lspconfig = require('lspconfig')
+local servers = { 'ts_ls', 'clangd', 'hls', 'bashls', 'jsonls', 'html', 'cssls' }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup({})
+end
 
-" ALE setup for Haskell
-call ale#Set('haskell_my_cabal_options', '-fno-code -v0')
-
-function! s:my_cabal_GetCommand(buffer) abort
-  return 'cabal build '
-  \ . ale#Var(a:buffer, 'haskell_my_cabal_options')
-  \ . ' -- %s </dev/null'
-endfunction
-
-call ale#linter#Define('haskell', {
-\  'name': 'my_cabal',
-\  'aliases': ['my-cabal'],
-\  'output_stream': 'stderr',
-\  'executable': 'cabal',
-\  'command': function('s:my_cabal_GetCommand'),
-\  'callback': 'ale#handlers#haskell#HandleGHCFormat',
-\})
-
-if !exists('g:ale_linters') | let g:ale_linters = {} | en
-let g:ale_linters.haskell = ['my-cabal', 'hlint']
-let g:ale_linters.c = ['gcc']
-let g:c_syntax_for_h = 1
+vim.o.updatetime = 300
+vim.cmd [[
+  autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focus = false })
+]]
+EOF
