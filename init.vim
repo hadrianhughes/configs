@@ -4,8 +4,11 @@ set number
 " Set up font
 set guifont=Fira\ Code:h16
 
-" Automatic file type detection
+" Automatically detect whether to use tabs or spaces
 filetype plugin indent on
+set smarttab
+set autoindent
+set smartindent
 
 " Prevent delay
 set timeoutlen=1000 ttimeoutlen=0
@@ -68,7 +71,6 @@ call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'neovim/nvim-lspconfig'
-"Plug 'w0rp/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'scrooloose/nerdcommenter'
 Plug 'lepture/vim-jinja'
@@ -79,7 +81,7 @@ Plug 'robitx/gp.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
@@ -162,13 +164,23 @@ autocmd BufRead,BufNewFile *.h set filetype=c
 " Enable LSP servers
 lua << EOF
 local lspconfig = require('lspconfig')
-local servers = { 'ts_ls', 'clangd', 'hls', 'bashls', 'jsonls', 'html', 'cssls' }
+local servers = { 'ts_ls', 'clangd', 'hls', 'bashls', 'jsonls', 'html', 'cssls', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({})
 end
+
+require'lspconfig'.terraformls.setup {
+  cmd = { "terraform-ls", "serve" },
+  filetypes = { "terraform", "tf", "hcl" },
+  root_dir = require('lspconfig.util').root_pattern('.terraform', '.git', '*.tf'),
+  settings = {},
+}
 
 vim.o.updatetime = 300
 vim.cmd [[
   autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focus = false })
 ]]
+
+vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 EOF
