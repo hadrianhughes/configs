@@ -70,7 +70,7 @@ vim.cmd([[
 ]])
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "json", "lua", "typescript", "bash", "c", "haskell", "html", "css" }, -- add any you want
+  ensure_installed = { "json", "lua", "typescript", "bash", "c", "haskell", "html", "css", "wgsl" }, -- add any you want
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
