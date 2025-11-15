@@ -47,15 +47,14 @@ vim.cmd([[
   Plug 'dhruvasagar/vim-table-mode'
   Plug 'scrooloose/nerdcommenter'
   Plug 'lepture/vim-jinja'
-  Plug 'prisma/vim-prisma'
-  Plug 'hashivim/vim-terraform'
   Plug 'mattn/emmet-vim'
-  Plug 'robitx/gp.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
   call plug#end()
 
   " Set up color scheme
@@ -123,24 +122,38 @@ vim.cmd([[
   autocmd BufRead,BufNewFile *.h set filetype=c
 ]])
 
+-- Minimal nvim-cmp setup
+local cmp = require("cmp")
+
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = {
+    { name = "nvim_lsp" },
+  },
+})
+
+-- Make LSP advertise cmp support
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+vim.o.completeopt = "menu,menuone,noselect"
+
 -- Enable LSP servers
 local lspconfig = require('lspconfig')
 local servers = { 'ts_ls', 'clangd', 'hls', 'bashls', 'jsonls', 'html', 'cssls', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({})
+  lspconfig[lsp].setup({
+    capabilities = capabilities,
+  })
 end
-
-require'lspconfig'.terraformls.setup {
-  cmd = { "terraform-ls", "serve" },
-  filetypes = { "terraform", "tf", "hcl" },
-  root_dir = require('lspconfig.util').root_pattern('.terraform', '.git', '*.tf'),
-  settings = {},
-}
 
 vim.o.updatetime = 300
 vim.cmd [[
   autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focus = false })
 ]]
 
+-- Set up 'go definition' and 'go declaration'
 vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
